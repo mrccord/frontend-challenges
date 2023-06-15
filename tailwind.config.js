@@ -1,16 +1,43 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: '#0b0c10',
+      'dark-gunmetal': '#1f2833',
+      white: '#fff',
+      'silver-sand': '#c5c6c7',
+      keppel: '#45A29E',
+      'electric-blue': '#66FCF1',
+      'lt-very-light-gray': '#fafafa',
+      'lt-very-light-grayish-blue': '#e4e5f1',
+      'lt-light-grayish-blue': '#d2d3db',
+      'lt-dark-grayish-blue': '#9394a5',
+      'lt-very-dark-grayish-blue': '#484b6a',
+      'dt-very-dark-blue': '#161722',
+      'dt-very-dark-desaturated-blue': '#25273c',
+      'dt-light-grayish-blue': '#cacde8',
+      'dt-light-grayish-blue-hover': '#e4e5f1',
+      'dt-dark-grayish-blue': '#777a92',
+      'dt-very-dark-grayish-blue': '#4d5066',
+      'dt-very-dark-grayish-blue-hover': '#393a4c',
+      'gradient-base': '#3a7bfd',
+      'todo-gradient-to': '#57ddff',
+      'todo-gradient-from': '#c058f3',
+    },
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        todo_app_bg_dark: "url('/todo-app/img/bg-desktop-dark.jpg')",
+        todo_app_bg_dark_mobile: "url('/todo-app/img/bg-mobile-dark.jpg')",
+        todo_app_bg_light: "url('/todo-app/img/bg-desktop-light.jpg')",
+        todo_app_bg_light_mobile: "url('/todo-app/img/bg-mobile-light.jpg')",
       },
     },
   },
