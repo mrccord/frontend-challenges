@@ -31,7 +31,6 @@ export default function TodoLayout() {
   const [todos, setTodos] = useState<TTodo[]>([])
 
   useEffect(() => {
-    console.log('useEffect')
     setTodos(baseTodos)
   }, [])
 
@@ -50,9 +49,8 @@ export default function TodoLayout() {
     setTodos((prev) => prev.filter((todo) => !todo.completed))
   }
 
-  console.log('render TodoLayout')
   return (
-    <div className="absolute bottom-0 left-0 right-0 top-0 m-auto mt-40 w-[35rem] self-center text-lt-very-light-gray">
+    <div className="-mt-52 flex w-[35rem] flex-col self-center  text-lt-very-light-gray">
       <h1 className="text-3xl">TODO</h1>
       <InputTodo setTodo={setTodos} />
       <TodoList

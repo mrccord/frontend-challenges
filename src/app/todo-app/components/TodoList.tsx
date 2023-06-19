@@ -31,26 +31,21 @@ export default function TodoList({
   }, [todos, active])
 
   return (
-    <div
-      className={`${
-        !todos.length ? 'flex h-80 justify-center' : 'relative'
-      } mt-10 max-w-full rounded-md bg-white text-lt-very-dark-grayish-blue shadow-sm shadow-lt-light-grayish-blue dark:bg-dt-very-dark-desaturated-blue dark:text-dt-light-grayish-blue dark:shadow-lt-very-dark-grayish-blue`}
-    >
+    <div className="mt-10 flex min-h-[30rem] max-w-full flex-col rounded-md bg-white text-lt-very-dark-grayish-blue shadow-sm shadow-lt-light-grayish-blue dark:bg-dt-very-dark-desaturated-blue dark:text-dt-light-grayish-blue dark:shadow-lt-very-dark-grayish-blue">
       {filteredTodos.map((todo) => (
         <Todo key={todo.id} todo={todo} markAsCompleted={markAsCompleted} />
       ))}
-      {!todos.length ? (
-        <span className="self-center text-lt-light-grayish-blue dark:text-dt-dark-grayish-blue">
+      {!filteredTodos.length && (
+        <span className="mt-auto self-center text-lt-light-grayish-blue dark:text-dt-dark-grayish-blue">
           There are no tasks to display.
         </span>
-      ) : (
-        <TodoActions
-          todosLeft={todosleft}
-          setActive={setActive}
-          active={active}
-          removeAllCompletedTodos={removeAllCompletedTodos}
-        />
       )}
+      <TodoActions
+        todosLeft={todosleft}
+        setActive={setActive}
+        active={active}
+        removeAllCompletedTodos={removeAllCompletedTodos}
+      />
     </div>
   )
 }

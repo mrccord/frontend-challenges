@@ -4,8 +4,6 @@ type Props = {
 
 export default function Wrapper({ children }: Props) {
   return (
-    <div className="h-[calc(100vh-82px)] max-w-full border border-keppel">
-      {children}
-    </div>
+    <div className="h-[calc(100vh-82px)] border border-keppel">{children}</div>
   )
 }

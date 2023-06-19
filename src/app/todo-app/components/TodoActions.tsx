@@ -18,7 +18,7 @@ export default function TodoActions({
     'cursor-pointer hover:text-lt-very-dark-grayish-blue dark:hover:text-dt-light-grayish-blue-hover'
   const cssColorBase = 'text-gradient-base'
   return (
-    <section className="flex h-12 w-full items-center justify-between px-4 text-sm text-lt-dark-grayish-blue dark:text-dt-dark-grayish-blue">
+    <section className="mt-auto flex h-12 w-full items-center justify-between self-end px-4 text-sm text-lt-dark-grayish-blue dark:text-dt-dark-grayish-blue">
       <span>{todosLeft} items left</span>
       <div className="flex gap-5">
         <span
@@ -52,10 +52,7 @@ export default function TodoActions({
           Completed
         </span>
       </div>
-      <span
-        onClick={removeAllCompletedTodos}
-        className=" cursor-pointer hover:text-lt-very-dark-grayish-blue dark:hover:text-dt-light-grayish-blue-hover"
-      >
+      <span onClick={removeAllCompletedTodos} className={cssClass}>
         Clear Completed
       </span>
     </section>
