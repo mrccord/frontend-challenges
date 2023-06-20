@@ -5,10 +5,16 @@ import { Draggable } from 'react-beautiful-dnd'
 type Props = {
   todo: TTodo
   markAsCompleted: (id: string) => void
+  removeTodo: (id: string) => void
   index: number
 }
 
-export default function Todo({ todo, markAsCompleted, index }: Props) {
+export default function Todo({
+  todo,
+  markAsCompleted,
+  index,
+  removeTodo,
+}: Props) {
   return (
     <Draggable key={todo.id} draggableId={todo.id} index={index}>
       {(provided, snapshot) => (
@@ -42,7 +48,7 @@ export default function Todo({ todo, markAsCompleted, index }: Props) {
             </div>
           </div>
 
-          <span className="self-center">
+          <span className="w-2/3 self-center">
             {todo.completed ? (
               <del className="text-lt-light-grayish-blue dark:text-dt-dark-grayish-blue">
                 {todo.title}
@@ -53,6 +59,17 @@ export default function Todo({ todo, markAsCompleted, index }: Props) {
               </span>
             )}
           </span>
+          <div className="mouse-pointer flex w-1/3 items-center justify-end pr-5">
+            <button onClick={() => removeTodo(todo.id)}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+                <path
+                  fill="#494C6B"
+                  fill-rule="evenodd"
+                  d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       )}
     </Draggable>

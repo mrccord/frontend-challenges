@@ -21,6 +21,10 @@ export default function TodoLayout() {
     setTodos((prev) => prev.filter((todo) => !todo.completed))
   }
 
+  const removeTodo = (id: string) => {
+    setTodos((prev) => prev.filter((todo) => todo.id !== id))
+  }
+
   return (
     <div className="-mt-52 flex w-80 flex-col self-center text-lt-very-light-gray sm:w-[35rem]">
       <h1 className="text-3xl">TODO</h1>
@@ -30,6 +34,7 @@ export default function TodoLayout() {
         markAsCompleted={markAsCompleted}
         removeAllCompletedTodos={removeAllCompletedTodos}
         setTodo={setTodos}
+        removeTodo={removeTodo}
       />
     </div>
   )

@@ -11,6 +11,7 @@ type Props = {
   markAsCompleted: (id: string) => void
   removeAllCompletedTodos: () => void
   setTodo: Dispatch<SetStateAction<TTodo[]>>
+  removeTodo: (id: string) => void
 }
 
 export default function TodoList({
@@ -18,6 +19,7 @@ export default function TodoList({
   removeAllCompletedTodos,
   markAsCompleted,
   setTodo,
+  removeTodo,
 }: Props) {
   const [filteredTodos, setFilteredTodos] = useState<TTodo[]>(todos)
   const [active, setActive] = useState<TodosStatusEnum>(TodosStatusEnum.ALL)
@@ -59,6 +61,7 @@ export default function TodoList({
                     todo={todo}
                     markAsCompleted={markAsCompleted}
                     index={index}
+                    removeTodo={removeTodo}
                   />
                 ))}
                 {provided.placeholder}
