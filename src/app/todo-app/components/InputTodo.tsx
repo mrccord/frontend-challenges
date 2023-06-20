@@ -14,10 +14,10 @@ export default function InputTodo({ setTodo }: Props) {
     ) as HTMLInputElement
 
     const todo = elements.value
-    setTodo((prev) =>
-      prev.concat({ id: uuidv4(), title: todo, completed: false }),
-    )
-
+    setTodo((prev) => [
+      ...prev,
+      { id: uuidv4(), title: todo, completed: false },
+    ])
     ;(e.currentTarget.elements.namedItem('todo') as HTMLInputElement).value = ''
   }
   return (

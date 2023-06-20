@@ -1,38 +1,10 @@
-import { v4 as uuidv4 } from 'uuid'
 import { TTodo } from '../types/todo'
 import InputTodo from './InputTodo'
 import TodoList from './TodoList'
-import { useEffect, useState } from 'react'
-
-const baseTodos: TTodo[] = [
-  {
-    id: uuidv4(),
-    title: 'todo 1: do this',
-    completed: false,
-  },
-  {
-    id: uuidv4(),
-    title: 'todo 2: do this',
-    completed: false,
-  },
-  {
-    id: uuidv4(),
-    title: 'todo 3: do this',
-    completed: false,
-  },
-  {
-    id: uuidv4(),
-    title: 'todo 4: do this',
-    completed: false,
-  },
-]
+import { useState } from 'react'
 
 export default function TodoLayout() {
   const [todos, setTodos] = useState<TTodo[]>([])
-
-  useEffect(() => {
-    setTodos(baseTodos)
-  }, [])
 
   const markAsCompleted = (id: string) => {
     setTodos((prev) =>
@@ -50,13 +22,14 @@ export default function TodoLayout() {
   }
 
   return (
-    <div className="-mt-52 flex w-[35rem] flex-col self-center  text-lt-very-light-gray">
+    <div className="-mt-52 flex w-80 flex-col self-center text-lt-very-light-gray sm:w-[35rem]">
       <h1 className="text-3xl">TODO</h1>
       <InputTodo setTodo={setTodos} />
       <TodoList
         todos={todos}
         markAsCompleted={markAsCompleted}
         removeAllCompletedTodos={removeAllCompletedTodos}
+        setTodo={setTodos}
       />
     </div>
   )
