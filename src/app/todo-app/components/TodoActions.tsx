@@ -1,47 +1,46 @@
-import { Dispatch, SetStateAction } from 'react'
 import { TodosStatusEnum } from '../enums/todos-status.enum'
 
 type Props = {
-  setActive: Dispatch<SetStateAction<TodosStatusEnum>>
-  active: TodosStatusEnum
+  handleFilters: (status: TodosStatusEnum) => void
+  selectedFilter: TodosStatusEnum
 }
 
-export default function TodoActions({ setActive, active }: Props) {
-  const cssClass =
-    'cursor-pointer hover:text-lt-very-dark-grayish-blue dark:hover:text-dt-light-grayish-blue-hover'
-  const cssColorBase = 'text-gradient-base'
+const filterActions = [
+  {
+    id: 1,
+    name: 'All',
+    status: TodosStatusEnum.ALL
+  },
+  {
+    id: 2,
+    name: 'Active',
+    status: TodosStatusEnum.ACTIVE
+  },
+  {
+    id: 3,
+    name: 'Completed',
+    status: TodosStatusEnum.COMPLETED
+  }
+]
+
+export default function TodoActions({  selectedFilter, handleFilters }: Props) {
   return (
     <div className="flex gap-5">
-      <span
-        onClick={() => {
-          setActive(TodosStatusEnum.ALL)
-        }}
-        className={`${
-          active === TodosStatusEnum.ALL && cssColorBase
-        } ${cssClass}`}
-      >
-        All
-      </span>
-      <span
-        onClick={() => {
-          setActive(TodosStatusEnum.ACTIVE)
-        }}
-        className={`${
-          active === TodosStatusEnum.ACTIVE && cssColorBase
-        } ${cssClass}`}
-      >
-        Active
-      </span>
-      <span
-        onClick={() => {
-          setActive(TodosStatusEnum.COMPLETED)
-        }}
-        className={`${
-          active === TodosStatusEnum.COMPLETED && cssColorBase
-        } ${cssClass}`}
-      >
-        Completed
-      </span>
+      {
+        filterActions.map((action) => (
+          <span
+            key={action.id}
+            onClick={() => {
+              handleFilters(action.status)
+            }}
+            className={`${
+              selectedFilter === action.status && 'text-gradient-base'
+            } cursor-pointer hover:text-lt-very-dark-grayish-blue dark:hover:text-dt-light-grayish-blue-hover`}
+          >
+            {action.name}
+          </span>
+        ))
+      }
     </div>
   )
 }

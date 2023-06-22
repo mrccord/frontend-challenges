@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction} from 'react'
 import { TTodo } from '../types/todo'
 import Todo from './Todo'
 import TodoActions from './TodoActions'
@@ -12,6 +12,9 @@ type Props = {
   removeAllCompletedTodos: () => void
   setTodo: Dispatch<SetStateAction<TTodo[]>>
   removeTodo: (id: string) => void
+  todosleft: number
+  handleFilters: (status: TodosStatusEnum) => void
+  filter: TodosStatusEnum
 }
 
 export default function TodoList({
@@ -20,25 +23,14 @@ export default function TodoList({
   markAsCompleted,
   setTodo,
   removeTodo,
+  todosleft,
+  handleFilters,
+  filter,
 }: Props) {
-  const [filteredTodos, setFilteredTodos] = useState<TTodo[]>(todos)
-  const [active, setActive] = useState<TodosStatusEnum>(TodosStatusEnum.ALL)
-
-  const todosleft = todos.filter((todo) => !todo.completed).length
-
-  useEffect(() => {
-    if (active === TodosStatusEnum.ALL) {
-      setFilteredTodos(todos)
-    } else if (active === TodosStatusEnum.ACTIVE) {
-      setFilteredTodos(todos.filter((todo) => !todo.completed))
-    } else if (active === TodosStatusEnum.COMPLETED) {
-      setFilteredTodos(todos.filter((todo) => todo.completed))
-    }
-  }, [todos, active])
 
   const onDragEnd = (result: DropResult) => {
     if (!result.destination) return
-    const items = Array.from(filteredTodos)
+    const items = Array.from(todos)
     const [reorderedItem] = items.splice(result.source.index, 1)
     items.splice(result.destination.index, 0, reorderedItem)
     setTodo(items)
@@ -55,7 +47,7 @@ export default function TodoList({
                 ref={provided.innerRef}
                 className={`${snapshot.isDraggingOver ? '' : ''}`}
               >
-                {filteredTodos.map((todo, index) => (
+                {todos.map((todo, index) => (
                   <Todo
                     key={todo.id}
                     todo={todo}
@@ -69,7 +61,7 @@ export default function TodoList({
             )}
           </Droppable>
 
-          {!filteredTodos.length && (
+          {!todos.length && (
             <span className="mt-auto self-center text-lt-light-grayish-blue dark:text-dt-dark-grayish-blue">
               There are no tasks to display.
             </span>
@@ -77,13 +69,13 @@ export default function TodoList({
           <TodoFooter
             todosleft={todosleft}
             removeAllCompletedTodos={removeAllCompletedTodos}
-            setActive={setActive}
-            active={active}
+            handleFilters={handleFilters}
+            filter={filter}
           />
         </div>
       </DragDropContext>
       <div className="mx-w-full mt-10 flex h-10 items-center justify-center rounded-md bg-white text-lt-dark-grayish-blue shadow-sm shadow-lt-light-grayish-blue dark:bg-dt-very-dark-desaturated-blue dark:shadow-lt-very-dark-grayish-blue sm:hidden">
-        <TodoActions setActive={setActive} active={active} />
+        <TodoActions handleFilters={handleFilters} selectedFilter={filter} />
       </div>
       <h2 className="mt-10 self-center text-xs text-lt-dark-grayish-blue dark:text-dt-very-dark-grayish-blue">
         Drag and drop to reorder list
