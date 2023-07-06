@@ -24,7 +24,7 @@ const challenges = [
       "This app will be an excellent test of your HTML, CSS, and JS skills. You'll build custom form controls and use JavaScript to generate random passwords.",
     techs: [techEnum.NEXT, techEnum.TAILWIND],
     img: 'https://res.cloudinary.com/dz209s6jk/image/upload/f_auto,q_auto,w_700/Challenges/nvjjyhvhqfwnjseojdgg.jpg',
-    slug: 'password-generator-app',
+    slug: 'password-generator',
   },
 ]
 

@@ -31,6 +31,14 @@ module.exports = {
       'gradient-base': '#3a7bfd',
       'todo-gradient-to': '#57ddff',
       'todo-gradient-from': '#c058f3',
+      'pg-chinese-black': '#101017',
+      'pg-pine-tree': '#24222b',
+      'pg-mint-green': '#a4feaf',
+      'pg-hover-mint-green': '#78bb82',
+      'pg-roman-silver': '#848190',
+      'pg-strength-orange': '#f6cd6c',
+      'pg-strength-red': '#ff3d00',
+      'pg-strength-green': '#00e676',
     },
     extend: {
       backgroundImage: {
