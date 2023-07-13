@@ -39,6 +39,16 @@ module.exports = {
       'pg-strength-orange': '#f6cd6c',
       'pg-strength-red': '#ff3d00',
       'pg-strength-green': '#00e676',
+      'mf-marine-blue': '#02295a',
+      'mf-purplish-blue': '#473dff',
+      'mf-pastel-blue': '#adbeff',
+      'mf-light-blue': '#bfe2fd',
+      'mf-strawberry-red': '#ed3548',
+      'mf-cool-gray': '#9699ab',
+      'mf-light-gray': '#d6d9e6',
+      'mf-magnolia': '#f0f6ff',
+      'mf-alabaster': '#fafbff',
+      'mf-white': '#ffffff',
     },
     extend: {
       backgroundImage: {
@@ -46,6 +56,10 @@ module.exports = {
         todo_app_bg_dark_mobile: "url('/todo-app/img/bg-mobile-dark.jpg')",
         todo_app_bg_light: "url('/todo-app/img/bg-desktop-light.jpg')",
         todo_app_bg_light_mobile: "url('/todo-app/img/bg-mobile-light.jpg')",
+        multistep_form_bg_desktop:
+          "url('/multistep-form/img/bg-sidebar-desktop.svg')",
+        multistep_form_bg_mobile:
+          "url('/multistep-form/img/bg-sidebar-mobile.svg')",
       },
     },
   },
