@@ -4,4 +4,7 @@ export type FormData = {
   phone: string
   plan: string
   planFrecuency: boolean
+  onlineService: boolean
+  largeStorage: boolean
+  customProfile: boolean
 }

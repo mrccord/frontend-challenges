@@ -4,6 +4,7 @@ import IconPro from '../../../assets/svg/multistep/icon-pro.svg'
 import { UseFormGetValues, UseFormRegister } from 'react-hook-form'
 import { FormData } from '../types/data.type'
 import { ReactElement, useState } from 'react'
+import { COST_BY_PLAN } from '../constants/costs'
 
 type Props = {
   register: UseFormRegister<Partial<FormData>>
@@ -14,7 +15,8 @@ type RadioOption = {
   name: keyof FormData
   value: string
   icon: ReactElement
-  price: string
+  monthlyPrice: string
+  yearlyPrice: string
   label: string
 }
 
@@ -24,21 +26,24 @@ const radioOptions: RadioOption[] = [
     label: 'Arcade',
     value: 'plan-arcade',
     icon: <IconArcade />,
-    price: '$9/mo',
+    monthlyPrice: `$${COST_BY_PLAN['plan-arcade'].monthly}/mo`,
+    yearlyPrice: `$${COST_BY_PLAN['plan-arcade'].yearly}/yr`,
   },
   {
     name: 'plan',
     label: 'Advanced',
     value: 'plan-advanced',
     icon: <IconAdvanced />,
-    price: '$12/mo',
+    monthlyPrice: `$${COST_BY_PLAN['plan-advanced'].monthly}/mo`,
+    yearlyPrice: `$${COST_BY_PLAN['plan-advanced'].yearly}/yr`,
   },
   {
     name: 'plan',
     label: 'Pro',
     value: 'plan-pro',
     icon: <IconPro />,
-    price: '$15/mo',
+    monthlyPrice: `$${COST_BY_PLAN['plan-pro'].monthly}/mo`,
+    yearlyPrice: `$${COST_BY_PLAN['plan-pro'].yearly}/yr`,
   },
 ]
 
@@ -70,7 +75,9 @@ export default function PlanForm({ register, getValues }: Props) {
                     {option.label}
                   </div>
                   <div className="w-full text-sm text-mf-cool-gray">
-                    {option.price}
+                    {planFrecuencyValue
+                      ? option.yearlyPrice
+                      : option.monthlyPrice}
                   </div>
                 </div>
               </div>

@@ -27,10 +27,15 @@ export const useMultistepForm = (steps: Step[]) => {
     return i === 0
   }
 
+  const goTo = (i: number) => {
+    setCurrentStep(i)
+  }
+
   return {
     currentStep,
     next,
     previous,
+    goTo,
     isLastStep,
     isFirstStep,
     steps,
